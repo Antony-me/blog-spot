@@ -36,7 +36,7 @@ Virtualenvironment.
 A text editor.
 
 ##### Setup Instructions and Installation
-- Clone the repository to a directory in you computer. Link to repo https://github.com/Antony-me/perfect-pitch
+- Clone the repository to a directory in you computer. Link to repo https://github.com/Antony-me/blog-spot
 - Open terminal command line then navigate to the directory.
 - Run chmod a+x start.sh
 - ./start.sh to run the app
