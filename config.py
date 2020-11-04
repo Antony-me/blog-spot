@@ -3,9 +3,7 @@ import os
 class Config:
 
     SECRET_KEY = 'stuxnet993.'
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://moringa:Access@localhost/blogspot'
-
-   
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
     #  email configurations
     MAIL_SERVER = 'smtp.googlemail.com'
@@ -18,9 +16,8 @@ class Config:
 
 class ProdConfig(Config):
 
-    pass
-
-    # SQLALCHEMY_DATABASE_URI ='postgres://vfgysrcwsqfxal:ad7f3f1e5d3141e4b26d53b01268bd7e9afdadbba5682686aa18a394794e4db2@ec2-34-231-56-78.compute-1.amazonaws.com:5432/dbdd0icu7a7i5v'
+    # SQLALCHEMY_DATABASE_URI ='postgres://vozpbxssyhgpof:2a079ee85e7338392be8fa3ec6027d4745f5d11d5d0e692cd3b07e7bdc0379c8@ec2-54-156-121-142.compute-1.amazonaws.com:5432/dcugjvtovf241p'
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
 
 class DevConfig(Config):
     DEBUG = True
