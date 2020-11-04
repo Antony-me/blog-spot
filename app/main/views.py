@@ -10,10 +10,10 @@ from ..import db
 # @main.route("/home")
 def home():
 
-    post = Post.query.all()
+    posts = Post.query.all()
 
 
-    return render_template('home.html', post=post)
+    return render_template('home.html', posts=posts)
 
 
 @main.route("/about")
