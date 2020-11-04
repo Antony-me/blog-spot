@@ -63,7 +63,7 @@ class Post(db.Model):
     
 
 
-    def save_blog(self):
+    def save_post(self):
         """
         Save the posts 
         """
@@ -71,12 +71,12 @@ class Post(db.Model):
         db.session.commit()
 
     @classmethod
-    def clear_blogs(cls):
+    def clear_posts(cls):
         Post.all_posts.clear()
 
     # display posts
 
-    def get_blogs(id):
+    def get_posts(id):
         post = Post.query.filter_by(category_id=id).all()
 
         return post
@@ -108,7 +108,7 @@ class Comments(db.Model):
 
     @classmethod
     def get_comments(self, id):
-        comment = Comments.query.filter_by(blogs_id=id).all()
+        comment = Comments.query.filter_by(posts_id=id).all()
         
         return comment
 
