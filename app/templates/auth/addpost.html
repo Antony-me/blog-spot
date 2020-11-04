@@ -1,0 +1,23 @@
+{% extends "macros.html"%}
+{% block content%}
+   <div class="content-section">
+       <form method="POST" action="">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+           <h3>Add Your Pitch</h3>
+           <fieldset class="form-group">
+               <div class="form-group">
+                    {{ form.title.label(class="form-control-lable")}}
+                    {{ form.title(class="form-control form-control-lg")}}
+                </div>
+                <div class="form-group">
+                    {{ form.content.label(class="form-control-lable")}}
+                    {{ form.content(class="form-control form-control-lg")}}
+                </div>
+           </fieldset>
+           <div class="form-group">
+               {{ form.submit(class ="btn btn-outline-info")}}
+           </div>
+       </form>
+   </div>
+{% endblock%}

@@ -1,0 +1,34 @@
+{% extends "macros.html"%}
+{% block content %}
+<div class="container">
+    <div class="col-md-12">
+       <p class="text-left"><a class="btn btn-info" href="{{url_for('.new_pitch',id=pitches.category_id)}}">Post A Pitch</a></p>
+       <div class="well" style="background-color:#d0d1cb">
+         <p>{{pitches.content}}</p>
+       </div>
+
+       <!-- comments -->
+       <div class="col-md-6 col-offset-1">
+          <a class="btn btn-round" href="{{url_for('.upvote',id=pitches.id,vote_type=1)}}">Upvote <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">{{count_likes}}</span>  </a></h4>
+          <a class="btn btn-round" href="{{url_for('.upvote',id=pitches.id,vote_type=2)}}">Downvote <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> {{count_dislikes}} </a></h4>
+        </div>
+   </div>
+   <a class="btn btn-info" href="{{url_for('.post_comment',id=pitches.id)}}"> Add your comment</a></h4>
+        <h4>Comments:</h4> 
+    <div class="comments">
+
+        {% if comment %}
+        {%  for items in comment %}
+         <h5>{{ items.opinion }}</h5>
+
+         <em><small>by {{ items.user.username}}</small></em>
+         <br>
+         <hr>
+        {% endfor %}
+        {%else%}
+        <h3>No Comments yet </h3>
+        {% endif %}
+    </div>
+ </div>
+
+{% endblock %}

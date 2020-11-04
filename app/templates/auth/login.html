@@ -1,0 +1,38 @@
+{% extends "macros.html"%}
+{% block content%}
+   <div class="content-section">
+       <form method="POST" action="">
+        {{ form.csrf_token }}
+        {{ form.hidden_tag() }}
+           <h3>Login</h3>
+           <fieldset class="form-group">
+               <div class="form-group">
+                    {{ form.username.label(class="form-control-lable")}}
+                    {{ form.username(class="form-control form-control-lg")}}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-lable")}}
+                    {{ form.password(class="form-control form-control-lg")}}
+                </div>
+           
+           <div class="form-check ">
+                {{ form.remember.label(class="form-check-input")}} <br>
+                {{ form.remember(class= "form-check-input")}} 
+              
+           </div>
+        </fieldset> <br>
+           <div class="form-group">
+               {{ form.submit(class ="btn btn-outline-info")}}
+           </div>
+           
+       </form>
+       <small>
+        <a href="#">Forget password?</a>
+    </small>
+   </div>
+   <small class="text-muted">
+       Need An Account <a href="{{ url_for('auth.register')}}">Register</a>
+   </small>
+   <div>
+   </div>
+{% endblock%}
