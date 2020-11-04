@@ -2,6 +2,8 @@
 {% extends "macros.html"%}
 {% block content%}
    {%  for post in posts %}
+   <h3>{{ quote.quote}}</h3>
+   <small>{{quote.author}}</small>
    <article class="media content-section">
     <div class="media-body">
       <div class="article-metadata">

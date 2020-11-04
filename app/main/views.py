@@ -3,6 +3,7 @@ from . import main
 from .forms import CommentForm, AddPost, LoginForm, UpdateProfile
 from app.models import User,Post, Comments, Votes
 from flask_login import login_required, current_user
+from ..request import get_quotes
 from ..import db
 
 
@@ -12,8 +13,10 @@ def home():
 
     posts = Post.query.all()
 
+    quote = get_quotes()
 
-    return render_template('home.html', posts=posts)
+
+    return render_template('home.html', posts=posts, quote = quote) 
 
 
 @main.route("/about")
