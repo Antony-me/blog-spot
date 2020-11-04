@@ -1,4 +1,4 @@
-#!/home/moringa/Documents/Moringa-Projects/CORE-PYTHON/Blog-spot/virtual/bin/python2
+#!/home/moringa/Documents/Moringa-Projects/CORE-PYTHON/Blog-spot/virtual/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
