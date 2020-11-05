@@ -12,7 +12,8 @@ body {
   }
   
   .bg-steel {
-    background-color: Aqua;
+    background-color: rgb(23, 185, 185);
+    height: 15%;
   }
   
   .site-header .navbar-nav .nav-link {

@@ -1,4 +1,5 @@
-from flask import  render_template, url_for, flash, redirect
+from os import abort
+from flask import  render_template, url_for, flash, redirect, abort
 from . import main
 from .forms import CommentForm, AddPost, LoginForm, UpdateProfile
 from app.models import User,Post, Comments, Votes
@@ -65,8 +66,9 @@ def update_profile(uname):
 def new_post():
     form = AddPost()
     if form.validate_on_submit():
+        
         # author = current_user.id
-        new_post = Post(title = form.title.data, content= form.content.data)
+        new_post = Post(title = form.title.data, content= form.content.data, user_id = current_user.id)
         db.session.add(new_post)
         db.session.commit()
 
@@ -150,3 +152,47 @@ def upvote(id,vote_type):
             break
 
     return redirect(url_for('.view_post', id=id))
+
+
+#Update post
+@main.route('/view-post/<int:id>/update', methods=['GET', 'POST'])
+@login_required
+def update_post(id):
+
+    post = Post.query.get_or_404(id)
+    if post.user_id != current_user.id:
+        abort(403)
+
+    form = AddPost()
+    if form.validate_on_submit():
+        post.title = form.title.data
+        post.content = form.content.data
+        db.session.commit()
+
+        flash('Your Post has been updated succesfull', 'success')
+
+        return redirect(url_for('main.view_post', id = post.id))
+
+    form.title.data =post.title
+    form.content.data = post.content 
+
+    return render_template('auth/addpost.html',form=form , title= 'Update Post')
+
+
+
+
+#Update post
+@main.route('/view-post/<int:id>/delete', methods=['GET', 'POST'])
+@login_required
+def delete_post(id):
+
+    post = Post.query.get_or_404(id)
+    if post.user_id != current_user.id:
+        abort(403)
+    db.session.delete(post)
+    db.session.commit()
+    flash('Your post has been deleted', 'success')
+
+    return redirect(url_for('main.home'))
+
+    

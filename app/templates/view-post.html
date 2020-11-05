@@ -1,19 +1,25 @@
 {% extends "macros.html"%}
 {% block content %}
 <div class="container">
-    <div class="col-md-12">
-       <p class="text-left"><a class="btn btn-info" href="{{url_for('.new_post',id=posts.category_id)}}">Post A post</a></p>
-       <div class="well" style="background-color:#d0d1cb">
-         <p>{{posts.content}}</p>
-       </div>
+  <h3>{{ posts.title }}</h3>
+  <p>{{posts.content}}</p>
 
        <!-- comments -->
        <div class="col-md-6 col-offset-1">
           <a class="btn btn-round" href="{{url_for('.upvote',id=posts.id,vote_type=1)}}">Upvote <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true">{{count_likes}}</span>  </a></h4>
           <a class="btn btn-round" href="{{url_for('.upvote',id=posts.id,vote_type=2)}}">Downvote <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> {{count_dislikes}} </a></h4>
+          
+          {% if posts.user_id == current_user.id %}
+
+            <div >
+              <a class="btn btn-secondar btn-sm mt-1 m-1" href="{{url_for('main.update_post', id=posts.id)}}">Update</a>
+              <button type="button" class="btn btn-danger btn-sm m-1">DELETE</button>
+            </div>
+
+          {% endif %}
         </div>
    </div>
-   <a class="btn btn-info" href="{{url_for('.post_comment',id=posts.id)}}"> Add your comment</a></h4>
+   <a class="btn btn-info btn-sm" href="{{url_for('.post_comment',id=posts.id)}}">Comment</a></h4>
         <h4>Comments:</h4> 
     <div class="comments">
 
@@ -29,6 +35,4 @@
         <h3>No Comments yet </h3>
         {% endif %}
     </div>
- </div>
-
 {% endblock %}
