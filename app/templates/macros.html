@@ -17,17 +17,14 @@
       <header class="site-header">
         <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
           <div class="container">
-            <a class="navbar-brand mr-4" href="/">Blog Spot</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
+            <strong><a class="navbar-brand mr-4 " style="font-weight: bolder; font-size: xx-large;" href="/"><em>Blog</em>Spot</a></strong>
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{{url_for('main.about')}}">About</a>
-                <li><a class="nav-item nav-link" href="{{url_for('main.new_post')}}">Add post</a></li>
+                <a class="nav-item nav-link font-weight-bold" href="{{url_for('main.about')}}">About</a>
+                <li><a class="nav-item nav-link font-weight-bold" href="{{url_for('main.new_post')}}">Add post</a></li>
               </div>
               <!-- Navbar Right Side -->
-              <div class="navbar-nav">
+              <div class="navbar-nav font-weight-bold">
                 {% if current_user.is_authenticated %}
                   <li class="nav-item nav-link">{{current_user.username}}</li>
                   <li><a class="nav-item nav-link" href="{{url_for('main.profile',uname=current_user.username)}}">Profile</a></li>
@@ -41,7 +38,7 @@
           </div>
         </nav>
     </header>
-    <br> <br> <br>
+    <br> <br>
     <main role="main" class="container">
         <div class="row">
           <div class="col-md-8">
@@ -62,7 +59,12 @@
                   <li class="list-group-item list-group-item-light"><a href="#">Latest Posts</a></li>
                   <li class="list-group-item list-group-item-light"><a href="#">Blog of The Week</a></li>
                   <li class="list-group-item list-group-item-light"><a href="#">Events</a></li>
-                  
+                  <li class="list-group-item list-group-item-light"><a href="#">Promotions</a></li>
+                  <li class="list-group-item list-group-item-light"><a href="#">Services Offered</a></li>
+                  <li class="list-group-item list-group-item-light"><a href="#">Subscribe</a></li>
+                  <li class="list-group-item list-group-item-light"><a href="#">Members</a></li>
+                  <li class="list-group-item list-group-item-light"><a href="#">Gallary</a></li>
+                  <li class="list-group-item list-group-item-light"><a href="#">chill spot</a></li>
                 </ul>
               </p>
             </div>

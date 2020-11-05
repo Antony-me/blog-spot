@@ -196,4 +196,10 @@ def delete_post(id):
 
     return redirect(url_for('main.home'))
 
+@main.route('/best_blog', methods = ['GET','POST'])
+@login_required
+def best_blog():
+
+    votes = Votes.query.all()
+
     
